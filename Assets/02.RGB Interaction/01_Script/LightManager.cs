@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class LightManager : MonoBehaviour
 {
-    bool redlight;
-    bool greenlight;
-    bool bluelight;
+    [SerializeField] private bool redlight;
+    [SerializeField]private bool greenlight;
+    [SerializeField] private bool bluelight;
 
-    public Light2D backLight;
+    public Light2D RGBLight;
 
     [SerializeField] Image redBtn_img;
     [SerializeField] Image greenBtn_img;
@@ -31,7 +31,7 @@ public class LightManager : MonoBehaviour
     void Update()
     {
         UpdateLight();
-        UpdateButtonUI();
+        //UpdateButtonUI();
     }
 
     private void UpdateLight()
@@ -40,7 +40,7 @@ public class LightManager : MonoBehaviour
         int _g = greenlight ? 100 : 0;
         int _b = bluelight ? 100 : 0;
 
-        backLight.color = new Color( _r, _g, _b );
+        RGBLight.color = new Color( _r, _g, _b );
     }
 
     private void UpdateButtonUI()
