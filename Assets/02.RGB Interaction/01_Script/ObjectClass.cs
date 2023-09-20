@@ -11,15 +11,22 @@ public class ObjectClass : MonoBehaviour
     [SerializeField] protected bool objectG;
     [SerializeField] protected bool objectB;
 
+
     protected RGBColor objectRGB;
     protected RGBColor displayRGB;
     protected RGBColor lightRGB;
 
-    protected SpriteRenderer spriteRenderer;
+    protected SpriteRenderer rend;
+    protected BoxCollider2D col;
+    protected Rigidbody2D rigid;
+
+    [SerializeField] protected ObjectArrow arrow;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        rend = GetComponent<SpriteRenderer>();
+        col = GetComponent<BoxCollider2D>();
+        rigid = GetComponent<Rigidbody2D>();
 
         objectRGB = new RGBColor(objectR, objectG, objectB);
         lightRGB = new RGBColor();
@@ -32,6 +39,7 @@ public class ObjectClass : MonoBehaviour
         SetRGBColors();
     }
     protected virtual void CheckLightInteraction() { }
+    protected virtual void CheckCanInteraction() { }
 
     protected void UpdateDisplayColor(int alpha)
     {
@@ -39,7 +47,7 @@ public class ObjectClass : MonoBehaviour
         int _g = displayRGB.G ? 100 : 0;
         int _b = displayRGB.B ? 100 : 0;
 
-        spriteRenderer.color = new Color(_r, _g, _b, alpha);
+        rend.color = new Color(_r, _g, _b, alpha);
     }
 
     protected void UpdateLightColor()
@@ -54,4 +62,11 @@ public class ObjectClass : MonoBehaviour
         objectRGB.Set(objectR, objectG, objectB);
     }
 
+}
+
+public enum ObjectArrow
+{
+    NONE,
+    UP,
+    DOWN,
 }
