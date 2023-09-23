@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Select : MonoBehaviour
 {
     public GameObject creat;	// 플레이어 닉네임 입력UI
+    public GameObject[] deleteButton; //삭제 버튼
     public TextMeshProUGUI[] slotText;		// 슬롯버튼 아래에 존재하는 Text들
     public TextMeshProUGUI newStageLV;	// 새로 입력된 플레이어의 닉네임
 
@@ -25,6 +27,7 @@ public class Select : MonoBehaviour
                 DataManager.instance.nowSlot = i;	// 선택한 슬롯 번호 저장
                 DataManager.instance.LoadData();	// 해당 슬롯 데이터 불러옴
                 slotText[i].text = DataManager.instance.nowPlayer.stageLV.ToString();	// 버튼에 닉네임 표시
+                deleteButton[i].gameObject.SetActive(true);
             }
             else	// 데이터가 없는 경우
             {
@@ -75,5 +78,10 @@ public class Select : MonoBehaviour
             return;
         }
         newStageLV.text = (int.Parse(newStageLV.text) - 1).ToString();
+    }
+    public void DeleteDataButton(int number)
+    {
+        DataManager.instance.DeleteData(number);
+        SceneManager.LoadScene(1); // 게임씬으로 이동
     }
 }

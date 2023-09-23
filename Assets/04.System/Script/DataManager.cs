@@ -38,4 +38,8 @@ public class DataManager : MonoBehaviour
         nowSlot = -1;
         nowPlayer = new TestPlayerData();
     }
+    public void DeleteData(int number)
+    {
+        File.Delete(path + number.ToString());
+    }
 }
