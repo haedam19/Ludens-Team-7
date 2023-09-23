@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: lightManager
       value: 
       objectReference: {fileID: 916000874}
+    - target: {fileID: 7372622605420754329, guid: 7a8cccd79c095ac418d61ea4819b0174, type: 3}
+      propertyPath: activationTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7372622605420754334, guid: 7a8cccd79c095ac418d61ea4819b0174, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -233,6 +237,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2355354613258798744, guid: d8a4c2c4907bcab4a971282b12483aa1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355354613258798745, guid: d8a4c2c4907bcab4a971282b12483aa1, type: 3}
+      propertyPath: objectB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355354613258798745, guid: d8a4c2c4907bcab4a971282b12483aa1, type: 3}
+      propertyPath: objectG
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2355354613258798745, guid: d8a4c2c4907bcab4a971282b12483aa1, type: 3}

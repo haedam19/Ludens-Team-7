@@ -13,6 +13,8 @@ public class RGBButton : MonoBehaviour
     [SerializeField] private bool leverG;
     [SerializeField] private bool leverB;
 
+    [SerializeField] private float activationTime;
+
     private SpriteRenderer rend;
     private Light2D activationLight;
 
@@ -56,7 +58,7 @@ public class RGBButton : MonoBehaviour
         transform.GetChild(0).localPosition = new Vector3(0, -0.2f, 0);
         activationLight.enabled = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(activationTime);
 
         transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
         activationLight.enabled = false;
