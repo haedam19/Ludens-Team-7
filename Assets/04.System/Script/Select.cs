@@ -9,10 +9,10 @@ using Unity.VisualScripting;
 
 public class Select : MonoBehaviour
 {
-    public GameObject creat;	// 플레이어 닉네임 입력UI
+    public GameObject creat;	// 스테이지 입력UI
     public GameObject[] deleteButton; //삭제 버튼
     public TextMeshProUGUI[] slotText;		// 슬롯버튼 아래에 존재하는 Text들
-    public TextMeshProUGUI newStageLV;	// 새로 입력된 플레이어의 닉네임
+    public TextMeshProUGUI newStageLV;	// 새로 입력된 스테이지
 
     bool[] savefile = new bool[3];	// 세이브파일 존재유무 저장
 
@@ -26,7 +26,7 @@ public class Select : MonoBehaviour
                 savefile[i] = true;			// 해당 슬롯 번호의 bool배열 true로 변환
                 DataManager.instance.nowSlot = i;	// 선택한 슬롯 번호 저장
                 DataManager.instance.LoadData();	// 해당 슬롯 데이터 불러옴
-                slotText[i].text = DataManager.instance.nowPlayer.stageLV.ToString();	// 버튼에 닉네임 표시
+                slotText[i].text = DataManager.instance.nowPlayer.stageLV.ToString();	// 버튼에 스테이지 표시
                 deleteButton[i].gameObject.SetActive(true);
             }
             else	// 데이터가 없는 경우
@@ -34,7 +34,7 @@ public class Select : MonoBehaviour
                 slotText[i].text = "Empty";
             }
         }
-        // 불러온 데이터를 초기화시킴.(버튼에 닉네임을 표현하기위함이었기 때문)
+        // 불러온 데이터를 초기화시킴.(버튼에 스테이지를 표현하기위함이었기 때문)
         DataManager.instance.DataClear();
     }
 
@@ -53,7 +53,7 @@ public class Select : MonoBehaviour
         }
     }
 
-    public void Creat()	// 플레이어 닉네임 입력 UI를 활성화하는 메소드
+    public void Creat()	// 스테이지 입력 UI를 활성화하는 메소드
     {
         creat.gameObject.SetActive(true);
     }
