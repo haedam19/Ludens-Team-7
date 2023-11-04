@@ -9,8 +9,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
 
-    public TestPlayerData nowPlayer = new TestPlayerData();
-    public int nowSlot;
+    public PlayerData playerData = new PlayerData();
     public string path;
     private void Awake()
     {
@@ -25,21 +24,20 @@ public class DataManager : MonoBehaviour
     }
     public void SaveData()
     {
-        string data = JsonUtility.ToJson(nowPlayer);
-        File.WriteAllText(path + nowSlot.ToString(), data);
+        string data = JsonUtility.ToJson(playerData);
+        File.WriteAllText(path, data);
     }
     public void LoadData()
     {
-        string data = File.ReadAllText(path + nowSlot.ToString());
-        nowPlayer = JsonUtility.FromJson<TestPlayerData>(data);
+        string data = File.ReadAllText(path);
+        playerData = JsonUtility.FromJson<PlayerData>(data);
     }
     public void DataClear()
     {
-        nowSlot = -1;
-        nowPlayer = new TestPlayerData();
+        playerData = new PlayerData();
     }
-    public void DeleteData(int number)
+    public void DeleteData()
     {
-        File.Delete(path + number.ToString());
+        File.Delete(path);
     }
 }

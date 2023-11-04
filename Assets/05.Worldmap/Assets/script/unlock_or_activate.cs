@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
-public class unlock_or_activate : MonoBehaviour
+public class Unlock_or_activate : MonoBehaviour
 {
     public TextMeshProUGUI textMesh;  // 인스펙터에서 TextMeshProUGUI 컴포넌트를 할당
     public Store store;  // 인스펙터에서 Store 컴포넌트를 할당
-    
-    private string state = "activate";
 
+    private string state = "activate";
     public void SetState(string newValue)
     {
         state = newValue;
@@ -20,8 +20,7 @@ public class unlock_or_activate : MonoBehaviour
         return state;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitTitle()
     {
         if (store != null && textMesh != null)
         {
@@ -32,14 +31,17 @@ public class unlock_or_activate : MonoBehaviour
             if (stage-1 == level)
             {
                 state = "activate";
+                GetComponent<Button>().interactable = true;
             }
             else if (level >= stage)
             {
                 state = "unlocked";
+                GetComponent<Button>().interactable = true;
             }
             else
             {
                 state = "locked";
+                GetComponent<Button>().interactable = false;
             }
             
             textMesh.text = state;
