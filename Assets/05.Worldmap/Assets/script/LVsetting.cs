@@ -15,7 +15,7 @@ public class LVsetting : MonoBehaviour
         {
             store.Save();
             //게임 씬 이동
-            SceneManager.LoadScene(1); //테스트로 현재 맵 다시 로드
+            SceneManager.LoadScene(0); //테스트로 현재 맵 다시 로드
         }
     }
 }
